@@ -1,0 +1,89 @@
+## Foundry
+
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+
+Foundry consists of:
+
+- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+
+## Documentation
+
+https://book.getfoundry.sh/
+
+## Usage
+
+### Build
+
+```shell
+$ forge build
+```
+
+### Test
+
+```shell
+$ forge test
+```
+
+### Format
+
+```shell
+$ forge fmt
+```
+
+### Gas Snapshots
+
+```shell
+$ forge snapshot
+```
+
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```
+
+## Checks, Effects and Interactions
+
+## Better to emit events before Outside interactions
+
+## CRON expressions
+
+```
+* * * * *	Every minute
+0 * * * *	Every hour
+0 0 * * *	Every day at 12:00 AM
+0 0 * * FRI	At 12:00 AM, only on Friday
+0 0 1 * *	At 12:00 AM, on day 1 of the month
+```
+
+## Tests!
+
+1. write deploy script
+   1. may not work on zkSync
+2. write tests
+   1. Local chain
+   2. Forked testnet
+   3. Forked mainnet
