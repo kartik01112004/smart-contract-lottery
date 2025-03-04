@@ -87,3 +87,25 @@ $ cast --help
    1. Local chain
    2. Forked testnet
    3. Forked mainnet
+
+## Testing Events
+
+Assert a specific log is emitted during the next call.
+
+Call the cheat code, specifying whether we should check the first, second or third topic, and the log data (expectEmit() checks them all). Topic 0 is always checked.
+Emit the event we are supposed to see during the next call.
+Perform the call.
+You can perform steps 1 and 2 multiple times to match a sequence of events in the next call.
+
+If the event is not available in the current scope (e.g. if we are using an interface, or an external smart contract), we can define the event ourselves with an identical event signature.
+
+There are 2 varieties of expectEmit:
+
+Without checking the emitter address: Asserts the topics match without checking the emitting address.
+With address: Asserts the topics match and that the emitting address matches.
+
+check more about events : [foundry book](https://book.getfoundry.sh/cheatcodes/expect-emit?highlight=expectEmit#expectemit)
+
+## Warp and Roll
+
+these are foundry cheatcodes that provide ability to change the block timestamp and block number of the localy running blockchain for running tests
