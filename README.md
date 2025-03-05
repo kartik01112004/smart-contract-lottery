@@ -109,3 +109,9 @@ check more about events : [foundry book](https://book.getfoundry.sh/cheatcodes/e
 ## Warp and Roll
 
 these are foundry cheatcodes that provide ability to change the block timestamp and block number of the localy running blockchain for running tests
+
+## Coverage report
+
+`forge coverage --report debug`
+
+use this to get better understanging of what has not been tested yet
