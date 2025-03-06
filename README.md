@@ -115,3 +115,14 @@ these are foundry cheatcodes that provide ability to change the block timestamp 
 `forge coverage --report debug`
 
 use this to get better understanging of what has not been tested yet
+
+## Get log in Test
+
+` Vm.Log[] memory entries = vm.getRecordedLogs();`
+
+`bytes32 requestId = entries[1].topics[1];`
+why we did not pass 0 as an index?
+its so because the 0th log enrty is of the vrfCoordinator which too emits the RequestId in similar event
+also the 0th topic is always reserved for some thing.. so it automaticaly gets stored in 1st index
+
+## Fuzz testing

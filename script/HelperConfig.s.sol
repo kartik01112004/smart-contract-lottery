@@ -6,7 +6,9 @@ import {VRFCoordinatorV2_5Mock} from "@chainlink/contracts/src/v0.8/vrf/mocks/VR
 import {LinkToken} from "test/mocks/LinkToken.sol";
 
 abstract contract CodeConstants {
-    /** vrf mock values */
+    /**
+     * vrf mock values
+     */
     uint96 public MOCK_BASE_FEE = 0.25 ether;
     uint96 public MOCK_GAS_PRICE_LINK = 1e9;
     //link eth price
@@ -36,9 +38,7 @@ contract HelperConfig is Script, CodeConstants {
         networkConfigs[ETH_SEPILIA_CHIAN_ID] = getSepoliaETHConfig();
     }
 
-    function getConfigByChainid(
-        uint256 chainId
-    ) public returns (NetworkConfig memory) {
+    function getConfigByChainid(uint256 chainId) public returns (NetworkConfig memory) {
         if (networkConfigs[chainId].vrfCoordinator != address(0)) {
             return networkConfigs[chainId];
         } else if (chainId == LOCAL_CHIAIN_ID) {
@@ -53,16 +53,15 @@ contract HelperConfig is Script, CodeConstants {
     }
 
     function getSepoliaETHConfig() public pure returns (NetworkConfig memory) {
-        return
-            NetworkConfig({
-                entranceFee: 0.01 ether,
-                interval: 30,
-                vrfCoordinator: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B,
-                gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
-                callbackGasLimit: 500000,
-                subscriptionId: 0,
-                link: 0x779877A7B0D9E8603169DdbD7836e478b4624789
-            });
+        return NetworkConfig({
+            entranceFee: 0.01 ether,
+            interval: 30,
+            vrfCoordinator: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B,
+            gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
+            callbackGasLimit: 500000,
+            subscriptionId: 0,
+            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789
+        });
     }
 
     function getOrCreateAnvilEthCOnfig() public returns (NetworkConfig memory) {
@@ -73,11 +72,8 @@ contract HelperConfig is Script, CodeConstants {
         // deploy mocks and such
 
         vm.startBroadcast();
-        VRFCoordinatorV2_5Mock vrfCoordinatorMock = new VRFCoordinatorV2_5Mock(
-            MOCK_BASE_FEE,
-            MOCK_GAS_PRICE_LINK,
-            MOCK_WEI_PER_UINT_LINK
-        );
+        VRFCoordinatorV2_5Mock vrfCoordinatorMock =
+            new VRFCoordinatorV2_5Mock(MOCK_BASE_FEE, MOCK_GAS_PRICE_LINK, MOCK_WEI_PER_UINT_LINK);
 
         LinkToken linkToken = new LinkToken();
 
