@@ -51,3 +51,6 @@ addConsumer:
 fundSubscription:
 	@forge script script/Interactions.s.sol:FundSubscription $(NETWORK_ARGS)
 
+
+deploy-sepolia:
+	@forge script scripts/DeployRaffle.s.sol:DeployRaffle --rpc-url ${SEPOLIA_RPC_URL} --account default --broadcast --etherscan-api-key ${ETHERSCAN_API_KEY} -vvvv
